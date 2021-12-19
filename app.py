@@ -19,6 +19,7 @@ loinc_map = {
     "30385-9": "RDW.val",
 }
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -39,11 +40,11 @@ def predict():
     headers = {'Content-Type': 'application/json'}
     r = requests.post(url, data=str.encode(json.dumps(input_dict)), headers=headers)
     output_dict = json.loads(r.json())
-    return render_template('index.html', prediction_text='Probability: {0}'.format(output_dict['ModelRes']['Data'][0]['Value']))
+    return render_template('index.html',
+                           prediction_text='Probability: {0}'.format(output_dict['ModelRes']['Data'][0]['Value']))
 
 
 def load_json_template():
     json_file = 'input_template.json'
     input_dict = json.load(open(json_file))
     return input_dict
-
