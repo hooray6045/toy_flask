@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+    <title>ML API</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>MACE predictor</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+        <table style="border-collapse: collapse; width: 100%;" border="0">
+            <tbody>
+            <tr>
+                <td style="width: 35%;"> Age:</td>
+                <td style="width: 15%;"><input name="Age" type="text" value="74" size="15%" /></td>
+                <td style="width: 35%;"> Gender:</td>
+                <td style="width: 15%;"><input name="Gender" type="text" value="F" size="15%" /></td>
+            </tr>
+            <tr>
+                <td style="width: 35%;"> FIRST_TRP:</td>
+                <td style="width: 15%;"><input name="FIRST_TRP" type="text" value="41" size="15%" /></td>
+                <td style="width: 35%;"> HEART_RATE_MAX:</td>
+                <td style="width: 15%;"><input name="HEART_RATE_MAX" type="text" value="115" size="15%" /></td>
+            </tr>
+            <tr>
+                <td style="width: 35%;"> BUN:</td>
+                <td style="width: 15%;"><input name="BUN" type="text" value="46" size="15%" /></td>
+                <td style="width: 35%;"> lymph_leu_non_variant:</td>
+                <td style="width: 15%;"><input name="lymph_leu_non_variant" type="text" value="6" size="15%" /></td>
+            </tr>
+            <tr>
+                <td style="width: 35%;"> glome_M.p:</td>
+                <td style="width: 15%;"><input name="glome_M.p" type="text" value="78" size="15%" /></td>
+                <td style="width: 35%;"> DIASTOLIC_BLOOD_PRESSURE_MAX:</td>
+                <td style="width: 15%;"><input name="DIASTOLIC_BLOOD_PRESSURE_MAX" type="text" value="96" size="15%" /></td>
+            </tr>
+            <tr>
+                <td style="width: 35%;"> BODY_WEIGHT_MIN:</td>
+                <td style="width: 15%;"><input name="BODY_WEIGHT_MIN" type="text" value="116" size="15%" /></td>
+                <td style="width: 35%;"> Basophils.val:</td>
+                <td style="width: 15%;"><input name="Basophils.val" type="text" value="0" size="15%" /></td>
+            </tr>
+            <tr>
+                <td style="width: 35%;"> Eos:</td>
+                <td style="width: 15%;"><input name="EoS" type="text" value="0.22" size="15%" /></td>
+                <td style="width: 35%;"> Neu/PMN/polys:</td>
+                <td style="width: 15%;"><input name="Neu/PMN/polys" type="text" value="8.76" size="15%" /></td>
+            </tr>
+            <tr>
+                <td style="width: 35%;"> BnP:</td>
+                <td style="width: 15%;"><input name="BnP" type="text" value="347" size="15%" /></td>
+                <td style="width: 35%;"> RDW.val:</td>
+                <td style="width: 15%;"><input name="RDW.val" type="text" value="19.4" size="15%" /></td>
+            </tr>
+
+            </tbody>
+        </table>
+<button class="btn btn-primary btn-block btn-large" type="submit">Predict</button></form><br /><br /></div>
+<p>{{prediction_text}}</p>
+
+</body>
+</html>
