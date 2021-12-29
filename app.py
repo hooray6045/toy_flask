@@ -41,7 +41,9 @@ def predict():
     r = requests.post(url, data=str.encode(json.dumps(input_dict)), headers=headers)
     output_dict = json.loads(r.json())
     return render_template('index.html',
-                           prediction_text='Probability: {0}'.format(output_dict['ModelRes']['Data'][0]['Value']))
+                           prediction_text='Probability: {0}'.format(output_dict['ModelRes']['Data'][0]['Value']),
+                           pos_contributor_text='Positive Factors - {0}'.format(output_dict['ModelRes']['Data'][2]['Value']),
+                           neg_contributor_text='Negative Factors - {0}'.format(output_dict['ModelRes']['Data'][3]['Value']))
 
 
 def load_json_template():
