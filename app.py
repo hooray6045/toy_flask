@@ -1,3 +1,4 @@
+import numpy as np
 from flask import Flask, render_template, request, jsonify, render_template, url_for
 import json
 import requests
@@ -28,22 +29,35 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     input_dict = load_json_template()
-    input_dict['ModelReq']['Age'] = int(request.form.get('Age'))
+    try:
+        input_dict['ModelReq']['Age'] = int(request.form.get('Age'))
+    except ValueError:
+        input_dict['ModelReq']['Age'] = np.nan
     input_dict['ModelReq']['Gender'] = request.form.get('Gender')
 
     for idx in range(len(input_dict['ModelReq']['Data'])):
         code = input_dict['ModelReq']['Data'][idx]['Code']
-        value = float(request.form.get(loinc_map.get(code)))
+        try:
+            value = float(request.form.get(loinc_map.get(code)))
+        except ValueError:
+            value = np.nan
         input_dict['ModelReq']['Data'][idx]['Results'][0]['result_value'] = value
-
+    print(input_dict['ModelReq']['Data'])
     url = 'http://b19b12df-2d14-4820-accc-f58499f35b05.eastus2.azurecontainer.io/score'
     headers = {'Content-Type': 'application/json'}
     r = requests.post(url, data=str.encode(json.dumps(input_dict)), headers=headers)
     output_dict = json.loads(r.json())
-    return render_template('index.html',
-                           prediction_text='Probability: {0}'.format(output_dict['ModelRes']['Data'][0]['Value']),
-                           pos_contributor_text='Positive Factors - {0}'.format(output_dict['ModelRes']['Data'][2]['Value']),
-                           neg_contributor_text='Negative Factors - {0}'.format(output_dict['ModelRes']['Data'][3]['Value']))
+    print(output_dict)
+    error_message = output_dict['CommonMessage']['Errors']
+    if error_message:
+        return render_template('index.html', prediction_text='Errors: {0}'.format('\t'.join(error_message)))
+    else:
+        return render_template('index.html',
+                               prediction_text='Probability: {0}'.format(output_dict['ModelRes']['Data'][0]['Value']),
+                               pos_contributor_text='Positive Factors - {0}'.format(
+                                   output_dict['ModelRes']['Data'][2]['Value']),
+                               neg_contributor_text='Negative Factors - {0}'.format(
+                                   output_dict['ModelRes']['Data'][3]['Value']))
 
 
 def load_json_template():
