@@ -42,12 +42,12 @@ def predict():
         except ValueError:
             value = np.nan
         input_dict['ModelReq']['Data'][idx]['Results'][0]['result_value'] = value
-    print(input_dict['ModelReq']['Data'])
+
     url = 'http://b19b12df-2d14-4820-accc-f58499f35b05.eastus2.azurecontainer.io/score'
     headers = {'Content-Type': 'application/json'}
     r = requests.post(url, data=str.encode(json.dumps(input_dict)), headers=headers)
     output_dict = json.loads(r.json())
-    print(output_dict)
+
     error_message = output_dict['CommonMessage']['Errors']
     if error_message:
         return render_template('index.html', prediction_text='Errors: {0}'.format('\t'.join(error_message)))
