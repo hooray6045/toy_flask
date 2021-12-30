@@ -53,7 +53,9 @@ def predict():
         return render_template('index.html', prediction_text='Errors: {0}'.format('\t'.join(error_message)))
     else:
         return render_template('index.html',
-                               prediction_text='Probability: {0}'.format(output_dict['ModelRes']['Data'][0]['Value']),
+                               prediction_text='Probability: {0} {1}'.format(
+                                   output_dict['ModelRes']['Data'][0]['Value'],
+                                   output_dict['ModelRes']['Data'][1]['Value']),
                                pos_contributor_text='Positive Factors - {0}'.format(
                                    output_dict['ModelRes']['Data'][2]['Value']),
                                neg_contributor_text='Negative Factors - {0}'.format(
