@@ -22,45 +22,45 @@
             <tbody>
             <tr>
                 <td style="width: 35%;"> Age:</td>
-                <td style="width: 15%;"><input name="Age" type="text" value="74" size="15%" /></td>
+                <td style="width: 15%;"><input name="Age" type="text" value="{{request.form['Age'] | default('74', true)}}" size="15%" /></td>
                 <td style="width: 35%;"> Gender:</td>
-                <td style="width: 15%;"><input name="Gender" type="text" value="F" size="15%" /></td>
+                <td style="width: 15%;"><input name="Gender" type="text" value="{{request.form['Gender'] | default('F', true)}}" size="15%" /></td>
             </tr>
             <tr>
                 <td style="width: 35%;"> FIRST_TRP:</td>
-                <td style="width: 15%;"><input name="FIRST_TRP" type="text" value="41" size="15%" /></td>
+                <td style="width: 15%;"><input name="FIRST_TRP" type="text" value="{{request.form['FIRST_TRP'] | default('41', true)}}" size="15%" /></td>
                 <td style="width: 35%;"> HEART_RATE_MAX:</td>
-                <td style="width: 15%;"><input name="HEART_RATE_MAX" type="text" value="115" size="15%" /></td>
+                <td style="width: 15%;"><input name="HEART_RATE_MAX" type="text" value="{{request.form['HEART_RATE_MAX'] | default('115', true)}}" size="15%" /></td>
             </tr>
             <tr>
                 <td style="width: 35%;"> BUN:</td>
-                <td style="width: 15%;"><input name="BUN" type="text" value="46" size="15%" /></td>
+                <td style="width: 15%;"><input name="BUN" type="text" value="{{request.form['BUN'] | default('46', true)}}" size="15%" /></td>
                 <td style="width: 35%;"> lymph_leu_non_variant:</td>
-                <td style="width: 15%;"><input name="lymph_leu_non_variant" type="text" value="6" size="15%" /></td>
+                <td style="width: 15%;"><input name="lymph_leu_non_variant" type="text" value="{{request.form['lymph_leu_non_variant'] | default('6', true)}}" size="15%" /></td>
             </tr>
             <tr>
                 <td style="width: 35%;"> glome_M.p:</td>
-                <td style="width: 15%;"><input name="glome_M.p" type="text" value="78" size="15%" /></td>
+                <td style="width: 15%;"><input name="glome_M.p" type="text" value="{{request.form['glome_M.p'] | default('78', true)}}" size="15%" /></td>
                 <td style="width: 35%;"> DIASTOLIC_BLOOD_PRESSURE_MAX:</td>
-                <td style="width: 15%;"><input name="DIASTOLIC_BLOOD_PRESSURE_MAX" type="text" value="96" size="15%" /></td>
+                <td style="width: 15%;"><input name="DIASTOLIC_BLOOD_PRESSURE_MAX" type="text" value="{{request.form['DIASTOLIC_BLOOD_PRESSURE_MAX'] | default('96', true)}}" size="15%" /></td>
             </tr>
             <tr>
                 <td style="width: 35%;"> BODY_WEIGHT_MIN:</td>
-                <td style="width: 15%;"><input name="BODY_WEIGHT_MIN" type="text" value="116" size="15%" /></td>
+                <td style="width: 15%;"><input name="BODY_WEIGHT_MIN" type="text" value="{{request.form['BODY_WEIGHT_MIN'] | default('116', true)}}" size="15%" /></td>
                 <td style="width: 35%;"> Basophils.val:</td>
-                <td style="width: 15%;"><input name="Basophils.val" type="text" value="0" size="15%" /></td>
+                <td style="width: 15%;"><input name="Basophils.val" type="text" value="{{request.form['Basophils.val'] | default('0', true)}}" size="15%" /></td>
             </tr>
             <tr>
                 <td style="width: 35%;"> Eos:</td>
-                <td style="width: 15%;"><input name="EoS" type="text" value="0.22" size="15%" /></td>
+                <td style="width: 15%;"><input name="EoS" type="text" value="{{request.form['EoS'] | default('0.22', true)}}" size="15%" /></td>
                 <td style="width: 35%;"> Neu/PMN/polys:</td>
-                <td style="width: 15%;"><input name="Neu/PMN/polys" type="text" value="8.76" size="15%" /></td>
+                <td style="width: 15%;"><input name="Neu/PMN/polys" type="text" value="{{request.form['Neu/PMN/polys'] | default('8.76', true)}}" size="15%" /></td>
             </tr>
             <tr>
                 <td style="width: 35%;"> BnP:</td>
-                <td style="width: 15%;"><input name="BnP" type="text" value="347" size="15%" /></td>
+                <td style="width: 15%;"><input name="BnP" type="text" value="{{request.form['BnP'] | default('347', true)}}" size="15%" /></td>
                 <td style="width: 35%;"> RDW.val:</td>
-                <td style="width: 15%;"><input name="RDW.val" type="text" value="19.4" size="15%" /></td>
+                <td style="width: 15%;"><input name="RDW.val" type="text" value="{{request.form['RDW.val'] | default('19.4', true)}}" size="15%" /></td>
             </tr>
 
             </tbody>
