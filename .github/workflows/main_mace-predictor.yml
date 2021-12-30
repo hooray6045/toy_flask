@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'mace-predictor'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4FD86E5FABF64037A5FC947873808B78 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_35AF207FCC3A48B5B94C0CDEF4621D0F }}
